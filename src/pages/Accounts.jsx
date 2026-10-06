@@ -1,6 +1,6 @@
 import React from 'react';
 import { 
-  FaWallet, FaApple, FaGamepad, FaUser 
+  FaWallet, FaGamepad, FaUser 
 } from 'react-icons/fa';
 import { 
   FiTrendingUp, FiFileText, FiSave, FiShoppingBag, FiTool, FiUser 
@@ -8,6 +8,26 @@ import {
 import { 
   BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer
 } from 'recharts';
+
+// --- CUSTOM WIDE SIM CARD ICON ---
+const SimCardIcon = ({ className = "" }) => (
+  <svg
+    viewBox="0 0 32 16"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <rect x="2" y="2" width="28" height="12" rx="2" />
+    <path d="M8 2v4" />
+    <path d="M16 2v4" />
+    <path d="M24 2v4" />
+    <rect x="8" y="8" width="4" height="3" rx="1" />
+    <rect x="20" y="8" width="4" height="3" rx="1" />
+  </svg>
+);
 
 // --- Mock Data for Debit & Credit Chart ---
 const chartData = [
@@ -28,8 +48,9 @@ const lastTransactions = [
 ];
 
 // --- Mock Data for Invoices Sent ---
+// Replaced <FaApple /> with <SimCardIcon /> for the Apple Store entry
 const invoicesSent = [
-  { id: 1, name: 'Apple Store', time: '5h ago', amount: '$450', icon: <FaApple />, bg: 'bg-green-50 text-green-500' },
+  { id: 1, name: 'Apple Store', time: '5h ago', amount: '$450', icon: <SimCardIcon className="w-6 h-3" />, bg: 'bg-green-50 text-green-500' },
   { id: 2, name: 'Michael', time: '2 days ago', amount: '$160', icon: <FaUser />, bg: 'bg-yellow-50 text-yellow-600' },
   { id: 3, name: 'Playstation', time: '5 days ago', amount: '$1085', icon: <FaGamepad />, bg: 'bg-blue-50 text-blue-500' },
   { id: 4, name: 'William', time: '10 days ago', amount: '$90', icon: <FaUser />, bg: 'bg-pink-50 text-pink-500' },
@@ -132,7 +153,8 @@ const Accounts = () => {
                 <p className="text-xs text-blue-200 mb-1">Balance</p>
                 <h4 className="text-xl font-bold">$5,756</h4>
               </div>
-              <FaApple className="text-3xl opacity-80" />
+              {/* Replaced FaApple with SimCardIcon */}
+              <SimCardIcon className="w-10 h-5 opacity-80" />
             </div>
             
             <div className="flex gap-8 relative z-10 mt-4">
