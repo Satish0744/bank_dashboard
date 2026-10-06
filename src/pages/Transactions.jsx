@@ -85,10 +85,10 @@ const Transactions = () => {
   const selectedMonthData = expenseChartData.find((data) => data.month === activeMonth);
 
   return (
-    <div className="space-y-6 animate-in fade-in duration-500 p-4 md:p-6">
+    // CHANGED: Removed p-4 md:p-6 and applied p-2 for the requested padding
+    <div className="space-y-6 animate-in fade-in duration-500 p-2">
       
       {/* --- Top Section: Cards & Expense Chart --- */}
-      {/* Kept 2/3 and 1/3 width ratio, reduced gap and overall height */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 items-stretch">
         
         {/* My Cards Section (Spans 2 columns) */}
@@ -99,10 +99,9 @@ const Transactions = () => {
               <FiPlus /> Add Card
             </button>
           </div>
-          {/* Reduced gap and height of the cards container */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 flex-1">
             
-            {/* Blue Card - Reduced padding and margins for shorter height */}
+            {/* Blue Card */}
             <div className="bg-gradient-to-br from-blue-700 to-blue-900 text-white p-4 rounded-2xl shadow-md relative overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-xl h-full flex flex-col justify-between">
               <div className="flex justify-between items-start mb-3">
                 <div>
@@ -130,7 +129,7 @@ const Transactions = () => {
               </div>
             </div>
 
-            {/* White Card - Reduced padding and margins for shorter height */}
+            {/* White Card */}
             <div className="bg-white text-darkBlue p-4 rounded-2xl shadow-md border border-gray-100 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl h-full flex flex-col justify-between">
               <div className="flex justify-between items-start mb-3">
                 <div>
@@ -160,7 +159,7 @@ const Transactions = () => {
           </div>
         </div>
 
-        {/* My Expense Section (Spans 1 column) - Reduced padding and fixed chart height to reduce overall height */}
+        {/* My Expense Section */}
         <div className="lg:col-span-1 bg-white p-4 rounded-2xl shadow-md border border-gray-100 flex flex-col h-full transition-all duration-300 hover:shadow-lg">
           <h3 className="text-lg font-semibold text-darkBlue mb-2 shrink-0">My Expense</h3>
           <div className="flex-1 flex flex-col justify-between">
@@ -169,7 +168,6 @@ const Transactions = () => {
                 ${selectedMonthData ? selectedMonthData.amount.toLocaleString() : '0'}
               </span>
             </div>
-            {/* Reduced height from h-48 to h-32 to make the card shorter */}
             <div className="h-32 w-full mt-auto">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={expenseChartData} barGap={6}>
@@ -206,12 +204,11 @@ const Transactions = () => {
       </div>
 
       {/* --- Bottom Section: Recent Transactions --- */}
-      {/* Reduced padding to make it more compact */}
       <div className="bg-white p-4 rounded-2xl shadow-md border border-gray-100 hover:shadow-lg transition-all duration-300">
         <h3 className="text-lg font-semibold text-darkBlue mb-4">Recent Transactions</h3>
         
-        {/* Tabs - reduced margin */}
-        <div className="flex gap-6 border-b border-gray-100 mb-4">
+        {/* Tabs - Added overflow-x-auto for mobile view */}
+        <div className="flex gap-6 border-b border-gray-100 mb-4 overflow-x-auto whitespace-nowrap">
           {['All Transactions', 'Income', 'Expense'].map((tab) => (
             <button
               key={tab}
@@ -228,7 +225,7 @@ const Transactions = () => {
           ))}
         </div>
 
-        {/* Table - Reduced row padding for shorter height */}
+        {/* Table - Kept min-width and overflow-x-auto for mobile horizontal scrolling */}
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse min-w-[700px]">
             <thead>
@@ -282,7 +279,7 @@ const Transactions = () => {
           </table>
         </div>
 
-        {/* Pagination - Reduced margin */}
+        {/* Pagination - Made responsive with flex-col on mobile */}
         <div className="flex flex-col sm:flex-row justify-between items-center mt-4 pt-3 border-t border-gray-100 gap-3">
           <p className="text-[11px] text-gray-400">
             Showing <span className="font-medium text-darkBlue">{indexOfFirstItem + 1}</span> to{' '}

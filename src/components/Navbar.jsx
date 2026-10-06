@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { FiSearch, FiSettings, FiBell, FiLogOut, FiUser } from 'react-icons/fi';
-import { FaApple } from 'react-icons/fa';
+import { FiSearch, FiSettings, FiBell, FiLogOut, FiUser, FiMenu } from 'react-icons/fi';
 
 const Navbar = ({ toggleSidebar }) => {
   const [showProfile, setShowProfile] = useState(false);
@@ -8,8 +7,9 @@ const Navbar = ({ toggleSidebar }) => {
   return (
     <header className="bg-white px-6 py-4 flex justify-between items-center shadow-sm">
       <div className="flex items-center gap-4">
+        {/* Mobile Menu Toggle Button - Replaced Apple logo with 3-bar hamburger menu */}
         <button onClick={toggleSidebar} className="md:hidden text-2xl text-darkBlue">
-          <FaApple />
+          <FiMenu />
         </button>
         <h2 className="text-2xl font-semibold text-darkBlue hidden sm:block">Overview</h2>
       </div>
